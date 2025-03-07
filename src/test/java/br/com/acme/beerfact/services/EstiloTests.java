@@ -37,4 +37,8 @@ public class EstiloTests {
         assertEquals(all.size(),0);
 
     }
+    @Test
+    public void testaFindAll(){
+
+    }
 }

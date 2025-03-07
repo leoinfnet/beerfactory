@@ -10,7 +10,7 @@ public interface LupuloService {
 
     List<Lupulo> findAll(int page, int size);
     List<Lupulo> findAll(int page, int size, boolean asceding);
-    List<Lupulo> findAllByName(String nome);
+    Lupulo findAllByName(String nome);
     List<Lupulo> findAllByNomeContains(String nome);
 
 }

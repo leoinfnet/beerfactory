@@ -17,24 +17,28 @@ public class LupuloServiceImpl implements LupuloService {
     LupuloRepository lupuloRepository;
     @Override
     public List<Lupulo> findAll() {
-        return lupuloRepository.findAll();
+        PageRequest pageRequest = PageRequest.ofSize(20);
+        return lupuloRepository.findAll(pageRequest).stream().toList();
     }
 
     @Override
     public List<Lupulo> findAll(int page, int size) {
-        return null;
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return lupuloRepository.findAll(pageRequest).stream().toList();
     }
     @Override
     public List<Lupulo> findAll(int page, int size, boolean asceding) {
-        return null;
+        Sort order = asceding ? Sort.by("nome").ascending() : Sort.by("nome").descending();
+        PageRequest pageRequest = PageRequest.of(page, size, order);
+        return lupuloRepository.findAll(pageRequest).stream().toList();
     }
     @Override
-    public List<Lupulo> findAllByName(String nome) {
-        return null;
+    public Lupulo findAllByName(String nome) {
+        return lupuloRepository.findAllByNome(nome);
     }
     @Override
     public List<Lupulo> findAllByNomeContains(String nome) {
-      return null;
+        return lupuloRepository.findAllByNomeStartingWithIgnoreCase(nome);
     }
 
 }
